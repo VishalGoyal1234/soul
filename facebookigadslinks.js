@@ -4,7 +4,7 @@ const fs = require('fs');
 const path = require('path');
 
 // Add Facebook Ad IDs
-const ids = [const ids =
+const ids = [
     'https://www.facebook.com/ads/library/?id=1026605729223504',
     'https://www.facebook.com/ads/library/?id=1112953833697417',
     'https://www.facebook.com/ads/library/?id=2343556976004945',
