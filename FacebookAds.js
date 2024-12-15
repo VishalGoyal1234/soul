@@ -4,8 +4,7 @@ const fs = require('fs');
 const path = require('path');
 
 // Add Facebook Ad IDs
-const ids = [',
-];
+const ids = ['https://www.facebook.com/ads/library/?id=1260796501867596', 'https://www.facebook.com/ads/library/?id=1108459724012438'];
 
 // Function to introduce a delay
 function delay(ms) {
@@ -46,15 +45,24 @@ async function fetchData(id) {
         scriptTags.each((index, element) => {
             const scriptContent = $(element).html();
             if (scriptContent && scriptContent.includes('"ig_username":') && scriptContent.includes('"page_id":')) {
+                if (scriptContent && scriptContent.includes('"page_profile_uri":')) {
+                    const pageProfileUriMatch = scriptContent.match(/"page_profile_uri":"([^"]+)"/);
+                    if (pageProfileUriMatch) {
+                        pageProfileUri = pageProfileUriMatch[1];
+                    }
+                }
                 const igUsernameMatch = scriptContent.match(/"ig_username":"([^"]+)"/);
-                const pageAliasMatch = scriptContent.match(/"page_alias":"([^"]+)"/);
                 if (igUsernameMatch) {
                     igUsername = igUsernameMatch[1];
-                } else if (pageAliasMatch) {                    
-                    pageId = pageAliasMatch[1];
-                } else {
-                    const pageIdMatch = scriptContent.match(/"page_id":"([^"]+)"/);
-                    pageId = 'https://www.facebook.com/' + pageIdMatch[1];
+                }
+                else if (pageProfileUri && pageProfileUri.includes('facebook.com')) {
+                    const pageAliasMatch = scriptContent.match(/"page_alias":"([^"]+)"/);
+                    if (pageAliasMatch) {
+                        pageId = 'https://www.facebook.com/' + pageAliasMatch[1];
+                    } else {
+                        const pageIdMatch = scriptContent.match(/"page_id":"([^"]+)"/);
+                        pageId = 'https://www.facebook.com/' + pageIdMatch[1];
+                    }
                 }
             }
         });
