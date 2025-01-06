@@ -67,15 +67,6 @@ const ids = ['https://www.facebook.com/ads/library/?id=565876202926300',
 'https://www.facebook.com/ads/library/?id=1127131029042162',
 'https://www.facebook.com/ads/library/?id=570863782389515',
 'https://www.facebook.com/ads/library/?id=8231898163576276',
-'https://www.facebook.com/ads/library/?id=908833751442033',
-'https://www.facebook.com/ads/library/?id=584190961011519',
-'https://www.facebook.com/ads/library/?id=1531237187552013',
-'https://www.facebook.com/ads/library/?id=612496331356205',
-'https://www.facebook.com/ads/library/?id=445046391995953',
-'https://www.facebook.com/ads/library/?id=1036230151852311',
-'https://www.facebook.com/ads/library/?id=1756421838485874',
-'https://www.facebook.com/ads/library/?id=1250200432764766',
-'https://www.facebook.com/ads/library/?id=1580129106027160',
 ];
 
 // Function to introduce a delay
